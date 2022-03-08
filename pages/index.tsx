@@ -1,5 +1,6 @@
 import ArtistCard from "components/Card/Artist";
 import AlbumLayout from "components/Layout/Album";
+import Player from "components/Player";
 import Form from "components/Search";
 import React, { useContext } from "react";
 import search, { Context } from "store/search";
@@ -13,6 +14,8 @@ const Index = () => {
       <Form />
       <ArtistCard />
       <AlbumLayout />
+
+      <Player />
     </div>
   );
 };
