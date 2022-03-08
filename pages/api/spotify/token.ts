@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import SpotifyWebApi from 'spotify-web-api-node';
+import type { NextApiRequest, NextApiResponse } from "next";
+import SpotifyWebApi from "spotify-web-api-node";
 
 const token = (req: NextApiRequest, res: NextApiResponse) => {
   const spotifyApi = new SpotifyWebApi({
@@ -7,7 +7,10 @@ const token = (req: NextApiRequest, res: NextApiResponse) => {
     clientSecret: process.env.CLIENT_SECRET,
   });
 
-  spotifyApi.clientCredentialsGrant()
+  console.log(1);
+
+  spotifyApi
+    .clientCredentialsGrant()
     .then((data) => res.json(data.body))
     .catch((err) => {
       throw err;
