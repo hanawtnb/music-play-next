@@ -1,14 +1,17 @@
 import type { AppProps } from "next/app";
 
-import { Store } from "store/search";
+import { Store as Search } from "store/search";
 import { Store as Token } from "store/token";
+import { Store as Song } from "store/song";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Token>
-      <Store>
-        <Component {...pageProps} />
-      </Store>
-    </Token>
+    <Song>
+      <Token>
+        <Search>
+          <Component {...pageProps} />
+        </Search>
+      </Token>
+    </Song>
   );
 }

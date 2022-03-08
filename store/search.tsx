@@ -7,7 +7,6 @@ export const Context = createContext();
 
 export const Store = ({ children }) => {
   const router = useRouter();
-  const [curSong, setCurSong] = useState(null);
 
   const { token, handleToken } = useContext(TokenContext);
 
@@ -24,13 +23,7 @@ export const Store = ({ children }) => {
     if (router?.query?.search) handleSearch(router.query?.search);
   }, [router?.query?.search]);
 
-  return (
-    <Context.Provider
-      value={{ searched, setCurSong: (id) => setCurSong(id), curSong }}
-    >
-      {children}
-    </Context.Provider>
-  );
+  return <Context.Provider value={{ searched }}>{children}</Context.Provider>;
 };
 
 export default {
