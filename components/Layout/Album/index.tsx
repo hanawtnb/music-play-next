@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import React, { useContext, useEffect, useState, VFC } from "react";
 import { Context as TokenContext } from "store/token";
-import { Context as SearchContext } from "store/search";
+import { Context as SongContext } from "store/song";
 import search from "utils/youtubeSearch";
 
 const Card: VFC = (props) => {
   const { name, artists }: any = props;
-  const { setCurSong } = useContext(SearchContext);
+  const { setCurSong } = useContext(SongContext);
   const [disabled, setDisabled] = useState(false);
 
   const searchSong = async () => {
