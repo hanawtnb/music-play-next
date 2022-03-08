@@ -24,7 +24,27 @@ export const Store = ({ children }) => {
     }
   }, [router]);
 
-  return <Context.Provider value={{ token }}>{children}</Context.Provider>;
+  const handleToken = (next) => async (args) => {
+    // Call this function before interacting with spotify api to check if access_token is valid.
+    let res = token;
+    if (!res || (new Date() as any) - res?.createdAt >= 3600000) {
+      res = await fetch("/api/spotify/token")
+        .then((res) => res.json())
+        .catch((err) => {
+          throw err;
+        });
+      if (!res) return;
+      // Set createdAt because expires in 3600 (1 hour), check above if expired.
+      setToken({ ...res, createdAt: new Date() });
+    }
+    return next({ search: args, ...res });
+  };
+
+  return (
+    <Context.Provider value={{ token, handleToken }}>
+      {children}
+    </Context.Provider>
+  );
 };
 
 export default {
