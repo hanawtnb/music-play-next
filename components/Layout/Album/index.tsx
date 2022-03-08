@@ -3,13 +3,21 @@ import Image from "next/image";
 import React, { useContext, useEffect, useState, VFC } from "react";
 import { Context as TokenContext } from "store/token";
 import { Context as SearchContext } from "store/search";
-import search from "store/search";
+import search from "utils/youtubeSearch";
 
 const Card: VFC = (props) => {
   const { name, artists }: any = props;
+  const { setCurSong } = useContext(SearchContext);
+  const [disabled, setDisabled] = useState(false);
 
+  const searchSong = async () => {
+    setDisabled(true);
+    const res = await search(`${artists?.[0]?.name} - ${name} song`);
+    setCurSong({ ...props, videoId: res });
+    setTimeout(() => setDisabled(false), 1000);
+  };
   return (
-    <button type="button">
+    <button onClick={searchSong} type="button">
       <span>{name}</span> &nbsp;- &nbsp;
       <span>{artists?.map(({ name }) => name)}</span>
     </button>
