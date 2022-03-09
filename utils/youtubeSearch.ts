@@ -20,24 +20,23 @@ const youtubeSearch = async (props) => {
     if (storage) storage = JSON.parse(storage);
 
     if (storage?.find(({ searchStr }) => searchStr === props)) {
-      res(storage?.find(({ searchStr }) => searchStr === props)?.id);
+      return res(storage?.find(({ searchStr }) => searchStr === props)?.id);
     }
 
     search(props, options, (err, results) => {
       if (err) {
         console.error(err);
-        rej();
+        return rej();
       }
       localStorage.setItem(
         "history",
         JSON.stringify(
           storage?.length > 0
-            ? [...storage, { ...res[0], searchStr: props }]
-            : [{ ...res[0], searchStr: props }]
+            ? [...storage, { ...results?.[0], searchStr: props }]
+            : [{ ...results?.[0], searchStr: props }]
         )
       );
-      console.dir(results);
-      res(results[0]?.id);
+      res(results?.[0]?.id);
     });
   });
   console.log("result", id);
