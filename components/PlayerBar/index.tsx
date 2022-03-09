@@ -4,11 +4,14 @@ import { useRouter } from "next/router";
 import { Context as SongContext } from "store/song";
 import Volume from "components/Volume";
 
+import styles from "./styles.module.scss";
+import DurationBar from "components/DurationBar";
+
 const Controls = () => {
   const { event } = useContext(SongContext);
   return (
     <>
-      <div>
+      <div className={styles["bar"]}>
         {/* <MdPlayCircleOutline onClick={playSong} />
       <MdPauseCircleOutline onClick={pauseSong} /> */}
         <button type="button" onClick={() => event.playVideo()}>
@@ -18,6 +21,7 @@ const Controls = () => {
           pause
         </button>
         <Volume />
+        <DurationBar />
       </div>
     </>
   );
