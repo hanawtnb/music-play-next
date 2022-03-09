@@ -1,12 +1,14 @@
-import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 const Form = () => {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const onSubmitForm = (event) => {
     event.preventDefault();
-    router.push({ pathname: "/", query: { search } }, null, { shallow: true });
+    router.push({ pathname: "/", query: { search } }, undefined, {
+      shallow: true,
+    });
   };
   return (
     <form action="submit" onSubmit={onSubmitForm}>

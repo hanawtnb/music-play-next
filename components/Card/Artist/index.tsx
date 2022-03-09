@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { Context as SearchContext } from "store/search";
 import Image from "next/image";
 import { useRouter } from "next/router";
+
+import { Context as SearchContext } from "store/search";
 
 const ArtistCard = () => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const ArtistCard = () => {
           onClick={() =>
             router.push(
               { pathname: "/", query: { album: items.album.id } },
-              null,
+              undefined,
               { shallow: true }
             )
           }
