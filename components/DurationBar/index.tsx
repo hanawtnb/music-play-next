@@ -5,8 +5,17 @@ import { Context as SongContext } from "store/song";
 import styles from "./styles.module.scss";
 
 const DurationBar = () => {
-  const { event } = useContext(SongContext);
-  const [duration, setDuration] = useState("0:00");
+  const { event, curSong } = useContext(SongContext);
+
+  const [duration, setDuration] = useState(0);
+  const [time, setTime] = useState(0);
+
+  console.log(time);
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(event?.getCurrentTime()), 500);
+    return () => clearInterval(timer);
+  }, [curSong, event]);
 
   useEffect(() => {
     setDuration(event?.getDuration());
@@ -22,6 +31,7 @@ const DurationBar = () => {
           trackClassName={styles["track"]}
           renderThumb={(props) => <div {...props} />}
           max={Number(duration)}
+          value={time}
         />
       </div>
     </>
