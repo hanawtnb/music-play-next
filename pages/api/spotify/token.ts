@@ -7,8 +7,6 @@ const token = (req: NextApiRequest, res: NextApiResponse) => {
     clientSecret: process.env.CLIENT_SECRET,
   });
 
-  console.log(1);
-
   spotifyApi
     .clientCredentialsGrant()
     .then((data) => res.json(data.body))

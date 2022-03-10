@@ -39,8 +39,6 @@ const youtubeSearch = async (props) => {
       res(results?.[0]?.id);
     });
   });
-  console.log("result", id);
-
   return id;
 };
 

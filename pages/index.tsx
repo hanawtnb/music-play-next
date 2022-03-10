@@ -8,8 +8,6 @@ import search, { Context } from "store/search";
 
 const Index = () => {
   const { searched } = useContext(Context);
-  console.log(searched);
-
   return (
     <div>
       <Form />

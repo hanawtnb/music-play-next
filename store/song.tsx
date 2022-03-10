@@ -5,9 +5,6 @@ export const Context = createContext();
 export const Store = ({ children }) => {
   const [curSong, setCurSong] = useState(null);
   const [event, setEvent] = useState(null);
-  console.log(event);
-
-  const [isPause, setIsPause] = useState(false);
 
   return (
     <Context.Provider
