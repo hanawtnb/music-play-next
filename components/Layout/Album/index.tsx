@@ -1,16 +1,21 @@
 import React, { useContext, useEffect, useState, VFC } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 
 import { Context as TokenContext } from "store/token";
 import { Context as SongContext } from "store/song";
 import search from "utils/youtubeSearch";
 
+import styles from "./styles.module.scss";
+
+//アルバムの曲を表示
 const Card: VFC = (props) => {
   const { name, artists }: any = props;
   const { setCurSong } = useContext(SongContext);
-  const [disabled, setDisabled] = useState(false);
+  const [, setDisabled] = useState(false);
 
+  /**
+   * Youtubeで曲を検索.
+   */
   const searchSong = async () => {
     setDisabled(true);
     const res = await search(`${artists?.[0]?.name} - ${name} song`);
@@ -18,30 +23,32 @@ const Card: VFC = (props) => {
     setTimeout(() => setDisabled(false), 1000);
   };
   return (
-    <button onClick={searchSong} type="button">
-      <span>{name}</span> &nbsp;- &nbsp;
-      <span>{artists?.map(({ name }) => name)}</span>
+    <button className={styles["song_card"]} onClick={searchSong} type="button">
+      <div className={styles["song_info"]}>
+        <span>{name}</span> &nbsp;- &nbsp;
+        <span>{artists?.map(({ name }) => name)}</span>
+      </div>
     </button>
   );
 };
 
+//アルバムを表示
 const AlbumLayout = () => {
   const router = useRouter();
   const { handleToken } = useContext(TokenContext);
+  const { searched, setSearched } = useContext(SongContext);
 
-  const [searched, setSearched]: any = useState([]);
-
+  /**
+   * spotifyAPIから曲を検索.
+   */
   const handleSearch = handleToken((args) => {
-    console.log(args);
-
     fetch(`/api/spotify/${args?.access_token}/album/${args.search}`)
       .then((res) => res.json())
       .then((body) => setSearched(body))
       .catch((err) => console.error(err));
   });
 
-  console.log("fgh", searched);
-
+  //パラメーターをもとに曲を検索。
   useEffect(() => {
     if (router?.query?.album) handleSearch(router?.query?.album);
   }, [router?.query?.album]);
@@ -50,14 +57,16 @@ const AlbumLayout = () => {
 
   return (
     <>
-      <p>{searched.name}</p>
-      <p>{searched.artists[0].name}</p>
-      <Image height={200} width={200} src={searched?.images[0].url} />
-      <div>
+      <div className={styles["album_info"]}>
+        <p>{searched.name}</p>
+        <p>{searched.artists[0].name}</p>
+        <img height={200} width={200} src={searched?.images[0].url} />
+      </div>
+      <div className={styles["songs"]}>
         {searched?.tracks?.items?.map((item) => (
           <Card
             {...item}
-            img={searched?.images[2]?.url}
+            img={searched?.images[0]?.url}
             albumId={searched?.id}
             key={item?.id}
           />
