@@ -10,8 +10,6 @@ const DurationBar = () => {
   const [duration, setDuration] = useState(0);
   const [time, setTime] = useState(0);
 
-  console.log(time);
-
   useEffect(() => {
     const timer = setInterval(() => setTime(event?.getCurrentTime()), 500);
     return () => clearInterval(timer);
