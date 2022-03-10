@@ -5,6 +5,7 @@ export const Context = createContext();
 export const Store = ({ children }) => {
   const [curSong, setCurSong] = useState(null);
   const [event, setEvent] = useState(null);
+  const [searched, setSearched] = useState([]);
 
   return (
     <Context.Provider
@@ -13,6 +14,8 @@ export const Store = ({ children }) => {
         curSong,
         setEvent,
         event,
+        searched,
+        setSearched,
       }}
     >
       {children}
