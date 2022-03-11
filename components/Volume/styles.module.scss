@@ -6,14 +6,76 @@
 }
 
 .track {
-  background-color: #0000ff;
+  background-color: rgb(119, 116, 116);
   border-radius: 10px;
   width: 10px;
 }
 
 .thumb {
-  background-color: red;
+  background-color: #d9ffffff;
   border-radius: 100%;
   width: 15px;
   height: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.volume {
+  display: inline;
+  font-size: 40px;
+  &__tooltip_top {
+    position: relative;
+    padding: 5px 20px;
+    margin: 20px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 40px;
+    }
+    cursor: default;
+
+    &:hover {
+      .volume_tooltip {
+        visibility: visible;
+        transform: translateY(-10px);
+        opacity: 1;
+        transition: 0.3s linear;
+        animation: odsoky 1s ease-in-out infinite alternate;
+        transform: translateY(-6px);
+      }
+    }
+  }
+  &_tooltip {
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 40px;
+    }
+    visibility: hidden;
+    z-index: 1;
+    opacity: 0.4;
+
+    padding: 20px 30px;
+
+    background: rgb(194, 193, 193);
+
+    position: absolute;
+    top: -250%;
+    left: 10%;
+
+    border-radius: 9px;
+    font: 16px;
+
+    transform: translateY(9px);
+    transition: all 0.3s ease-in-out;
+    ::after {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 40%;
+    }
+  }
 }

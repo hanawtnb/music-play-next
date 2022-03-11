@@ -1,0 +1,23 @@
+.controller {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: 15px auto 0 auto;
+  max-width: 100%;
+
+  &_controls {
+    display: flex;
+    margin: 0px 40px 0px 100px;
+    align-items: center;
+    button {
+      font-size: 40px;
+      background-color: transparent;
+      border: none;
+      margin-left: 10px;
+    }
+  }
+
+  .duration_bar {
+    margin-left: 30px;
+  }
+}

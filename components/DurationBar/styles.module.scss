@@ -1,17 +1,20 @@
 .vertical-slider {
-  height: 10px;
+  height: 15px;
   width: 800px;
 }
 
 .track {
-  background-color: blue;
+  background-color: rgb(119, 116, 116);
   border-radius: 10px;
   height: 100%;
 }
 
 .thumb {
-  background-color: red;
+  background-color: #d9ffffff;
   border-radius: 100%;
   width: 15px;
-  height: 10px;
+  height: 15px;
+  &:hover {
+    cursor: pointer;
+  }
 }
