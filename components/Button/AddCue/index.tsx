@@ -1,24 +1,29 @@
-import React, { useContext } from "react";
-import { Context as SongContext } from "store/song";
+import React, { useContext, VFC } from "react";
+
+import { Context as PlaylistContext } from "store/playlist";
 
 import styles from "./styles.module.scss";
 import { RiMenuAddLine } from "react-icons/ri";
 
-const AddCue = () => {
-  const { curSong } = useContext(SongContext);
+type Props = {
+  curSong: any;
+};
 
-  const addCue = () => {
-    let storage: any = localStorage.getItem("playlist");
-    if (storage) storage = JSON.parse(storage);
-
-    localStorage.setItem(
-      "playlist",
-      JSON.stringify(storage?.length > 0 ? [...storage, curSong] : [curSong])
-    );
-  };
+/**
+ * プレイリストに追加.
+ * @param props - 再生中の曲
+ * @returns - プレイリストに追加ボタン
+ */
+const AddCue: VFC<Props> = (props) => {
+  const { curSong } = props;
+  const { addPlaylist } = useContext(PlaylistContext);
 
   return (
-    <button className={styles["add-button"]} type="button" onClick={addCue}>
+    <button
+      className={styles["add-button"]}
+      type="button"
+      onClick={() => addPlaylist(curSong)}
+    >
       <RiMenuAddLine />
     </button>
   );
