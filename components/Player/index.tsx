@@ -1,5 +1,6 @@
 import React, { useContext, VFC } from "react";
 import YouTube from "react-youtube";
+
 import { Context as SongContext } from "store/song";
 
 const opts: any = {
@@ -11,18 +12,16 @@ const opts: any = {
 };
 
 const Player: VFC = () => {
-  const { curSong, setEvent } = useContext(SongContext);
-
-  if (!curSong?.videoId) return <div />;
-
+  const { curSong, setEvent, nextSong } = useContext(SongContext);
+  if (!curSong?.videoId) return null;
   return (
     <YouTube
+      onStateChange={(event) => setEvent(event.target)}
+      onReady={(event) => setEvent(event.target)}
+      onPlay={(event) => setEvent(event.target)}
       videoId={curSong?.videoId}
+      onEnd={nextSong}
       opts={opts}
-      onReady={(event) => setEvent(event.target)} // defaults -> noop
-      //   onPlay={(event) => setPlay(event.target)} // defaults -> noop
-      //   onEnd={() => nextSong()} // defaults -> noop
-      //   onStateChange={(event) => setEvent(event.target)} // defaults -> noop
     />
   );
 };
