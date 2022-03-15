@@ -1,23 +1,18 @@
-import ArtistCard from "components/Card/Artist";
+import React from "react";
+import type { NextPage } from "next";
+
 import AlbumLayout from "components/Layout/Album";
+import NavBar from "components/NavBar";
 import Player from "components/Player";
 import PlayerBar from "components/PlayerBar";
-import Form from "components/Search";
-import React, { useContext } from "react";
-import search, { Context } from "store/search";
 
-const Index = () => {
-  const { searched } = useContext(Context);
-  return (
-    <div>
-      <Form />
-      <ArtistCard />
-      <AlbumLayout />
+const MainPage: NextPage = () => (
+  <>
+    <NavBar />
+    <AlbumLayout />
+    <Player />
+    <PlayerBar />
+  </>
+);
 
-      <Player />
-      <PlayerBar />
-    </div>
-  );
-};
-
-export default Index;
+export default MainPage;

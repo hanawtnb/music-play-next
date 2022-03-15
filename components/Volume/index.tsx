@@ -27,7 +27,6 @@ const Volume = () => {
               onClick={() => {
                 setIsMuted(true);
                 event?.mute();
-                console.log(isMuted);
               }}
             >
               <BsVolumeUp />

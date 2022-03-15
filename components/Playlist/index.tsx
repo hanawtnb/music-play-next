@@ -7,13 +7,13 @@ import styles from "./styles.module.scss";
 
 const Playlist = () => {
   const { setCurSong, setCurAlbum } = useContext(SongContext);
-  const { playlist } = useContext(PlaylistContext);
+  const { playlist, removePlaylist } = useContext(PlaylistContext);
 
   return (
     <div className={styles["page"]}>
       <h4 className={styles["title"]}>My playlist</h4>
       {playlist ? (
-        playlist?.map((item) => (
+        playlist?.map((item, index) => (
           <div
             className={styles["card"]}
             key={item.id}
@@ -27,6 +27,7 @@ const Playlist = () => {
                 <p className={styles["info__name"]}>{item.name}</p>
                 <p>{item.artists[0].name}</p>
               </div>
+              <button onClick={removePlaylist(index)}>delete</button>
               <img src={item.img} />
             </div>
           </div>

@@ -11,11 +11,11 @@ import { VscDebugPause, VscPlayCircle } from "react-icons/vsc";
 
 //再生ボタンなどのコントローラー
 const Controls = () => {
-  const { event, curSong, searched, setCurSong, curAlbum } =
-    useContext(SongContext);
+  const [playlist, setPlaylist] = useState(null);
+  const { event, curSong, setCurSong, curAlbum } = useContext(SongContext);
+  console.log("今のアルバム", curAlbum);
 
   const [isPaused, setIsPaused] = useState(false);
-
   const [, setDisabled] = useState(false);
 
   useEffect(() => {
@@ -24,8 +24,13 @@ const Controls = () => {
     }
   }, []);
 
-  const arr = curAlbum?.tracks?.items.map((item: any) => item.name);
-  const curSongIndex = arr?.indexOf(curSong?.name);
+  // useEffect(() => {
+  //   let playlist: any = localStorage.getItem("playlist");
+  //   playlist = JSON.parse(playlist);
+  //   setPlaylist(playlist);
+  // }, []);
+  // const arr = curAlbum?.tracks?.items.map((item: any) => item.name);
+  // const curSongIndex = arr?.indexOf(curSong?.name);
 
   /**
    * 前の曲を再生
@@ -33,22 +38,20 @@ const Controls = () => {
   const playPrevSong = async () => {
     setDisabled(true);
 
-    let prevSongIndex = 0;
-    if (curSongIndex === 0) {
-      prevSongIndex = arr.length - 1;
-    } else {
-      prevSongIndex = curSongIndex - 1;
+    let prevSong =
+      curAlbum?.tracks?.items?.[
+        curAlbum?.tracks?.items?.findIndex(({ id }) => curSong?.id === id) - 1
+      ];
+
+    if (!prevSong?.videoId) {
+      prevSong = {
+        ...prevSong,
+        videoId: await search(
+          `${prevSong?.artists?.[0]?.name} - ${prevSong?.name} song`
+        ),
+      };
     }
-
-    const prevSong = curAlbum?.tracks.items[prevSongIndex];
-    const searchVideoId = await search(
-      `${curSong?.artists?.[0]?.name} - ${prevSong?.name} song`
-    );
-
-    const info = curAlbum?.tracks?.items[prevSongIndex];
-    const img = curAlbum?.images[0].url;
-
-    setCurSong({ ...info, img, videoId: searchVideoId });
+    setCurSong(prevSong);
     setTimeout(() => setDisabled(false), 1000);
   };
 
@@ -58,33 +61,27 @@ const Controls = () => {
   const playNextSong = async () => {
     setDisabled(true);
 
-    let nextSongIndex = 0;
-    if (curSongIndex === arr.length - 1) {
-      nextSongIndex = 0;
-    } else {
-      nextSongIndex = curSongIndex + 1;
+    let nextSong =
+      curAlbum?.tracks?.items?.[
+        curAlbum?.tracks?.items?.findIndex(({ id }) => curSong?.id === id) + 1
+      ];
+
+    if (!nextSong?.videoId) {
+      nextSong = {
+        ...nextSong,
+        videoId: await search(
+          `${nextSong?.artists?.[0]?.name} - ${nextSong?.name} song`
+        ),
+      };
     }
-
-    const nextSong = curAlbum?.tracks.items[nextSongIndex];
-    const searchVideoId = await search(
-      `${curSong?.artists?.[0]?.name} - ${nextSong?.name} song`
-    );
-
-    const info = curAlbum?.tracks?.items[nextSongIndex];
-    const img = curAlbum?.images[0].url;
-
-    setCurSong({
-      ...info,
-      img,
-      videoId: searchVideoId,
-    });
+    setCurSong(nextSong);
     setTimeout(() => setDisabled(false), 1000);
   };
 
   return (
     <>
       <div className={styles["controller"]}>
-        <div className={styles["controller_controls"]}>
+        <div className={styles["controls"]}>
           <button onClick={playPrevSong}>
             <BsSkipBackwardFill />
           </button>
@@ -111,10 +108,9 @@ const Controls = () => {
             <BsSkipForwardFill />
           </button>
         </div>
-        <div className={styles["duration_bar"]}>
+        <div>
           <DurationBar />
         </div>
-        <Volume />
       </div>
     </>
   );

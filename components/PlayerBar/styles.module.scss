@@ -15,34 +15,32 @@
   bottom: 0;
   right: 0;
   color: rgb(65, 63, 63);
-  display: flex;
   height: 10vh;
-  //   align-items: center;
-  vertical-align: middle;
-  &__controls {
+  .controls {
     max-width: 1400px;
-    margin: 0 auto;
-    min-width: 320px;
+    vertical-align: middle;
     width: 100%;
     display: flex;
-    // padding: 10px;
-    height: 100%;
-  }
-}
+    .playing {
+      display: flex;
+      width: 600px;
+      img {
+        height: 60px;
+        width: 60px;
+        justify-content: left;
+        margin: 20px;
+      }
+      &__name {
+        font-size: 15px;
+        margin-top: 10px;
+      }
+    }
 
-.playing {
-  display: flex;
-  position: fixed;
-  left: 0;
-  img {
-    height: 60px;
-    width: 60px;
-    // padding: 20px;
-    justify-content: left;
-    margin: 20px;
-  }
-  &__song-info {
-    font-size: 15px;
-    margin-top: 10px;
+    .options {
+      font-size: 40px;
+      display: flex;
+      position: absolute;
+      right: 50px;
+    }
   }
 }

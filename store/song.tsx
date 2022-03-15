@@ -4,6 +4,7 @@ export const Context = createContext();
 
 export const Store = ({ children }) => {
   const [curSong, setCurSong] = useState(null);
+  const [curAlbum, setCurAlbum] = useState(null);
   const [event, setEvent] = useState(null);
   const [searched, setSearched] = useState([]);
 
@@ -12,6 +13,8 @@ export const Store = ({ children }) => {
       value={{
         setCurSong,
         curSong,
+        curAlbum,
+        setCurAlbum,
         setEvent,
         event,
         searched,

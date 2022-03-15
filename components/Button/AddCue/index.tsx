@@ -1,26 +1,18 @@
 import React, { useContext, VFC } from "react";
 
 import { Context as PlaylistContext } from "store/playlist";
+import { Context as SongContext } from "store/song";
 
 import styles from "./styles.module.scss";
 import { RiMenuAddLine } from "react-icons/ri";
 
-type Props = {
-  curSong: any;
-};
-
-/**
- * プレイリストに追加.
- * @param props - 再生中の曲
- * @returns - プレイリストに追加ボタン
- */
-const AddCue: VFC<Props> = (props) => {
-  const { curSong } = props;
+const AddCue: VFC = () => {
+  const { curSong } = useContext(SongContext);
   const { addPlaylist } = useContext(PlaylistContext);
 
   return (
     <button
-      className={styles["add-button"]}
+      className={styles["add"]}
       type="button"
       onClick={() => addPlaylist(curSong)}
     >

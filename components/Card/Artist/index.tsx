@@ -1,18 +1,24 @@
 import React, { useContext } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 import { Context as SearchContext } from "store/search";
 
+import styles from "./styles.module.scss";
+
+/**
+ * 検索結果を表示.
+ */
 const ArtistCard = () => {
   const router = useRouter();
   const { searched } = useContext(SearchContext);
+
   if (searched?.length === 0 || !router.query?.search) return null;
 
   return (
-    <>
+    <div className={styles["page"]}>
       {searched?.items?.map((items: any) => (
         <div
+          className={styles["card"]}
           key={items.id}
           onClick={() =>
             router.push(
@@ -22,13 +28,16 @@ const ArtistCard = () => {
             )
           }
         >
-          <p>{items.name}</p>
-          <p>{items.artists[0].name}</p>
-          <Image width={200} height={200} src={items.album.images[0].url} />
+          <div className={styles["album"]}>
+            <div className={styles["info"]}>
+              <p className={styles["info__name"]}>{items.name}</p>
+              <p>{items.artists[0].name}</p>
+            </div>
+            <img src={items.album.images[0].url} />
+          </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
-
 export default ArtistCard;

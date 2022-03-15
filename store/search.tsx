@@ -11,6 +11,7 @@ export const Store = ({ children }) => {
   const { token, handleToken } = useContext(TokenContext);
 
   const [searched, setSearched] = useState(null);
+  const [newRelease, setNewRelease] = useState(null);
 
   const handleSearch = handleToken((args) => {
     fetch(`/api/spotify/${args?.access_token}/artist/${args.search}`)

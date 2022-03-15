@@ -33,8 +33,17 @@ export const Store = ({ children }) => {
     setPlaylist((cur) => [...cur, props]);
   };
 
+  const removePlaylist = (props: number) => {
+    if (!props) return;
+    const storage: any = localStorage.getItem("playlist");
+
+    const newPlaylist = JSON.parse(storage).splice(props, 1);
+    console.log("い", newPlaylist);
+    setPlaylist(newPlaylist);
+  };
+
   return (
-    <Context.Provider value={{ playlist, addPlaylist }}>
+    <Context.Provider value={{ playlist, addPlaylist, removePlaylist }}>
       {children}
     </Context.Provider>
   );

@@ -3,10 +3,9 @@ import YouTube from "react-youtube";
 import { Context as SongContext } from "store/song";
 
 const opts: any = {
-  height: "390",
-  width: "640",
+  height: "0",
+  width: "0",
   playerVars: {
-    // https://developers.google.com/youtube/player_parameters
     autoplay: 1,
   },
 };

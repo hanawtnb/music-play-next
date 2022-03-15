@@ -42,7 +42,7 @@ const AlbumCard: VFC<Props> = (props) => {
           <span>{artists?.map(({ name }) => name)}</span>
         </div>
       </button>
-      <AddCue curSong={props} />
+      <AddCue />
     </>
   );
 };
