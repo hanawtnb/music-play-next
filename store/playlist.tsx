@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createContext } from "react";
 import { useRouter } from "next/router";
 
-export const Context: any = createContext();
+export const Context: any = createContext(null);
 
 export const Store: any = ({ children }) => {
   const router = useRouter();
