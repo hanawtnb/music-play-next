@@ -19,6 +19,7 @@ const Volume = () => {
                 setIsMuted(false);
                 event?.unMute();
               }}
+              disabled={!event}
             >
               <BsFillVolumeMuteFill />
             </button>
@@ -28,6 +29,7 @@ const Volume = () => {
                 setIsMuted(true);
                 event?.mute();
               }}
+              disabled={!event}
             >
               <BsVolumeUp />
             </button>
@@ -43,6 +45,7 @@ const Volume = () => {
               orientation="vertical"
               invert
               pearling
+              disabled={!event}
             />
           </div>
         </div>

@@ -23,7 +23,7 @@ const Controls = () => {
   return (
     <div className={styles["controller"]}>
       <div className={styles["controls"]}>
-        <button onClick={prevSong}>
+        <button onClick={prevSong} disabled={!event}>
           <BsSkipBackwardFill />
         </button>
         {isPaused ? (
@@ -33,6 +33,7 @@ const Controls = () => {
               setIsPaused(false);
             }}
             type="button"
+            disabled={!event}
           >
             <VscPlayCircle />
           </button>
@@ -43,11 +44,12 @@ const Controls = () => {
               setIsPaused(true);
             }}
             type="button"
+            disabled={!event}
           >
             <VscDebugPause />
           </button>
         )}
-        <button onClick={nextSong} type="button">
+        <button onClick={nextSong} type="button" disabled={!event}>
           <BsSkipForwardFill />
         </button>
       </div>

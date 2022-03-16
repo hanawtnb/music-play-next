@@ -25,7 +25,6 @@ const PlayerBar = () => {
         <Controls />
         <div className={styles["options"]}>
           <Volume />
-          <AddCue />
         </div>
       </div>
     </div>

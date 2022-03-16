@@ -30,6 +30,7 @@ const DurationBar = () => {
           renderThumb={(props) => <div {...props} />}
           max={Number(duration)}
           value={time}
+          disabled={!event}
         />
       </div>
     </>
