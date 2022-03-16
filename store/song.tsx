@@ -2,9 +2,9 @@ import React, { useState, createContext } from "react";
 
 import search from "utils/youtubeSearch";
 
-export const Context = createContext();
+export const Context: any = createContext();
 
-export const Store = ({ children }) => {
+export const Store: any = ({ children }) => {
   const [curSong, setCurSong] = useState(null);
   const [curAlbum, setCurAlbum] = useState(null);
   const [event, setEvent] = useState(null);

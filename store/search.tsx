@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 
 import { Context as TokenContext } from "./token";
 
-export const Context = createContext();
+export const Context: any = createContext();
 
-export const Store = ({ children }) => {
+export const Store: any = ({ children }) => {
   const router = useRouter();
 
   const { token, handleToken } = useContext(TokenContext);

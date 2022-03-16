@@ -1,9 +1,9 @@
 import React, { useEffect, useState, createContext } from "react";
 import { useRouter } from "next/router";
 
-export const Context = createContext();
+export const Context: any = createContext();
 
-export const Store = ({ children }) => {
+export const Store: any = ({ children }) => {
   const router = useRouter();
 
   const [playlist, setPlaylist] = useState([]);
