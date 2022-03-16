@@ -1,4 +1,4 @@
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, useRef } from "react";
 import { useRouter } from "next/router";
 
 import styles from "./styles.module.scss";
@@ -15,7 +15,7 @@ const Form = () => {
     });
   };
 
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+  const handleChange = (e: any) => {
     setSearch(e?.target?.value);
 
     if (timer.current) clearTimeout(timer.current);
