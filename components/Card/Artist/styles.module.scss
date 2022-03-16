@@ -1,5 +1,5 @@
 .page {
-  padding: 70px 0px 100px 0px;
+  padding: 60px 0px 100px 0px;
   .title {
     font-size: 30px;
     text-align: center;
@@ -7,8 +7,10 @@
   }
   .card {
     height: 100px;
+    color: white;
     &:hover {
-      background-color: rgb(230, 225, 225);
+      background-color: rgb(138, 136, 136);
+      color: black;
       cursor: pointer;
     }
     .album {

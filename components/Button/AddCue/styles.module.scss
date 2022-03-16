@@ -3,4 +3,7 @@
   border: none;
   font-size: 35px;
   font-weight: lighter;
+  &:hover {
+    cursor: pointer;
+  }
 }

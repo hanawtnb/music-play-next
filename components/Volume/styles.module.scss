@@ -38,6 +38,9 @@
     cursor: default;
 
     &:hover {
+      svg {
+        cursor: pointer;
+      }
       .volume_tooltip {
         visibility: visible;
         transform: translateY(-10px);

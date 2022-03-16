@@ -19,7 +19,7 @@ export const Store = ({ children }) => {
     if (!props) return;
     const storage: any = localStorage.getItem("playlist");
 
-    if (storage?.find((item: any) => item.id === props.id)) return;
+    if (storage.find((item: any) => item.id === props.id)) return;
 
     if (storage) {
       localStorage.setItem(

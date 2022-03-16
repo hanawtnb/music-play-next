@@ -39,10 +39,12 @@ const AlbumCard: VFC<Props> = (props) => {
       <button className={styles["card"]} onClick={searchSong} type="button">
         <div className={styles["card__name"]}>
           <span>{name}</span> &nbsp;- &nbsp;
-          <span>{artists?.map(({ name }) => name)}</span>
+          <span className={styles["card__name--artist"]}>
+            {artists?.map(({ name }) => name)}
+          </span>
         </div>
+        <AddCue />
       </button>
-      <AddCue />
     </>
   );
 };

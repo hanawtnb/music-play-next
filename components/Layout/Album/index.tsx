@@ -32,23 +32,26 @@ const AlbumLayout = () => {
 
   return (
     <div className={styles["album"]}>
-      <img src={searched?.images[0].url} />
-
-      <div className={styles["album_info"]}>
-        <div className={styles["names"]}>
-          <p className={styles["names__track"]}>{searched.name}</p>
-          <p className={styles["names__artist"]}>{searched.artists[0].name}</p>
+      <div
+        className={styles["album__header"]}
+        style={{ backgroundImage: `url(${searched?.images[0].url})` }}
+      >
+        <div className={styles["content"]}>
+          <span className={styles["content__artist"]}>
+            {searched.artists[0].name}
+          </span>
+          <span className={styles["content__album"]}>{searched.name}</span>
         </div>
-        <div className={styles["cards"]}>
-          {searched?.tracks?.items?.map((item) => (
-            <AlbumCard
-              {...item}
-              img={searched?.images[0]?.url}
-              albumId={searched?.id}
-              key={item?.id}
-            />
-          ))}
-        </div>
+      </div>
+      <div className={styles["cards"]}>
+        {searched?.tracks?.items?.map((item) => (
+          <AlbumCard
+            {...item}
+            img={searched?.images[0]?.url}
+            albumId={searched?.id}
+            key={item?.id}
+          />
+        ))}
       </div>
     </div>
   );

@@ -1,13 +1,29 @@
 .card {
   border: none;
-  background-color: white;
-  height: 50px;
-  width: 40vw;
+  color: white;
+  background-color: rgb(53, 52, 52);
+  height: 70px;
+  width: 100%;
   font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    color: white;
+  }
   &:hover {
-    background-color: rgb(230, 225, 225);
+    background-color: rgb(138, 136, 136);
+    color: black;
+    cursor: pointer;
+    svg {
+      color: black;
+    }
   }
   &__name {
     text-align: left;
+    width: 50%;
+    &--artist {
+      color: rgb(250, 245, 245, 0.8);
+    }
   }
 }
