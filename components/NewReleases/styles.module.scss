@@ -1,0 +1,38 @@
+.page {
+  padding: 60px 0px 100px 0px;
+  .title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .card {
+    height: 100px;
+    color: white;
+    &:hover {
+      background-color: rgb(138, 136, 136);
+      color: black;
+      cursor: pointer;
+    }
+    .album {
+      display: flex;
+      justify-content: space-between;
+      vertical-align: middle;
+      margin: auto auto;
+      width: 50%;
+      .info {
+        margin: auto 0px;
+        font-size: 15px;
+        width: 80%;
+        &__name {
+          font-weight: bold;
+        }
+      }
+      img {
+        // left: 0;
+        height: 70px;
+        width: 70px;
+        margin-top: 15px;
+      }
+    }
+  }
+}
