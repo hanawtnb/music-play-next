@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
@@ -8,6 +8,7 @@ import styles from "./styles.module.scss";
 //fetcher関数の作成
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
+// スケルトンローディング
 const LoadingCard = () => {
   return (
     <div className={styles["loading"]}>

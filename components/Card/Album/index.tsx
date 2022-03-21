@@ -1,6 +1,5 @@
 import React, { useContext, VFC } from "react";
 
-import AddCue from "components/Button/AddCue";
 import { Context as SongContext } from "store/song";
 import search from "utils/youtubeSearch";
 
@@ -12,7 +11,11 @@ type Props = {
   albumId: string;
 };
 
-//アルバムの曲を表示
+/**
+ * アルバム曲を表示.
+ * @param props - 曲名、アーティスト名、
+ * @returns - アルバム収録曲のカード
+ */
 const AlbumCard: VFC<Props> = (props) => {
   const { name, artists }: any = props;
   const { setCurSong, setCurAlbum, searched } = useContext(SongContext);

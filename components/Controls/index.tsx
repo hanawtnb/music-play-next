@@ -11,7 +11,7 @@ import styles from "./styles.module.scss";
 //再生ボタンなどのコントローラー
 const Controls = () => {
   const { event, nextSong, prevSong } = useContext(SongContext);
-
+  // ポーズ状態
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {

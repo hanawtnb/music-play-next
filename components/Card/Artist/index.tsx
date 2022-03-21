@@ -7,11 +7,13 @@ import styles from "./styles.module.scss";
 
 /**
  * 検索結果を表示.
+ * @returns - 曲名とアルバムイメージのカード
  */
 const ArtistCard = () => {
   const router = useRouter();
   const { searched } = useContext(SearchContext);
 
+  //searchクエリがあれば検索
   if (searched?.length === 0 || !router.query?.search) return null;
 
   return (

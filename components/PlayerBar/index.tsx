@@ -2,15 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { Context as SongContext } from "store/song";
-import { Context as TokenContext } from "store/token";
 import Controls from "components/Controls";
 import Volume from "components/Volume";
 
 import styles from "./styles.module.scss";
 
 const PlayerBar = () => {
-  const { curSong, setSearched, searched } = useContext(SongContext);
-  const { handleToken } = useContext(TokenContext);
+  const { curSong } = useContext(SongContext);
   const router = useRouter();
 
   /**

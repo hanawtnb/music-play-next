@@ -5,15 +5,9 @@ import styles from "./styles.module.scss";
 
 const Form = () => {
   const timer = useRef(null);
-
   const router = useRouter();
+  // 検索
   const [search, setSearch] = useState("");
-  const onSubmitForm = (event) => {
-    event.preventDefault();
-    router.push({ pathname: "/", query: { search } }, undefined, {
-      shallow: true,
-    });
-  };
 
   const handleChange = (e: any) => {
     setSearch(e?.target?.value);
@@ -37,7 +31,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={onSubmitForm} className={styles["search"]}>
+    <form className={styles["search"]}>
       <input type="text" onChange={handleChange} value={search} />
     </form>
   );

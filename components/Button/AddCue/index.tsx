@@ -6,6 +6,10 @@ import { Context as SongContext } from "store/song";
 import styles from "./styles.module.scss";
 import { RiMenuAddLine } from "react-icons/ri";
 
+/**
+ * プレイリストに追加.
+ * @returns - プレイリスト追加ボタン
+ */
 const AddCue: VFC = () => {
   const { curSong } = useContext(SongContext);
   const { addPlaylist } = useContext(PlaylistContext);

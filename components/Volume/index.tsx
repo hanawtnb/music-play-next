@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 
 const Volume = () => {
   const { event } = useContext(SongContext);
+  // ミュート
   const [isMuted, setIsMuted] = useState(false);
 
   return (

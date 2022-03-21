@@ -15,6 +15,11 @@ type Props = {
   }[];
 };
 
+/**
+ *新着曲を表示.
+ * @param param0 - id、曲名、アルバムイメージ、アーティスト名
+ * @returns - 新着曲カード
+ */
 const Card: FC<Props> = ({ id, name, images, artists }) => {
   const router = useRouter();
   return (

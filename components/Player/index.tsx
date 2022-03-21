@@ -11,6 +11,7 @@ const opts: any = {
   },
 };
 
+// Youtubeビデオの再生
 const Player: VFC = () => {
   const { curSong, setEvent, nextSong } = useContext(SongContext);
   if (!curSong?.videoId) return null;
