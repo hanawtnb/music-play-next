@@ -16,6 +16,7 @@
   right: 0;
   color: rgb(65, 63, 63);
   height: 10vh;
+  z-index: 100;
   .controls {
     max-width: 1400px;
     vertical-align: middle;
@@ -30,9 +31,17 @@
         justify-content: left;
         margin: 20px;
       }
-      &__name {
+      p {
         font-size: 15px;
-        margin-top: 10px;
+        // margin-top: 10px;
+        border: none;
+        button {
+          border: none;
+          background-color: transparent;
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
 
