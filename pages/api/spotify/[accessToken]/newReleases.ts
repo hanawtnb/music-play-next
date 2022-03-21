@@ -6,7 +6,7 @@ const newRelease = (req: NextApiRequest, res: NextApiResponse) => {
   const spotifyApi = new SpotifyWebApi({ accessToken });
 
   return spotifyApi
-    .getNewReleases({ limit: 10, offset: 0, country: "SE" })
+    .getNewReleases({ limit: 20, offset: 0, country: "SE" })
     .then((data) => res.json(data.body))
     .catch((err) => console.log("Something went wrong!", err));
 };
