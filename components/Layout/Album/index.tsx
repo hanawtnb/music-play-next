@@ -49,7 +49,6 @@ const AlbumLayout = () => {
             {...item}
             img={searched?.images[0]?.url}
             albumId={searched?.id}
-            key={item?.id}
           />
         ))}
       </div>
