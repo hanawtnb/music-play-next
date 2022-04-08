@@ -18,6 +18,7 @@
   color: rgb(65, 63, 63);
   height: 10vh;
   z-index: 100;
+  animation: SlideIn 1.6s;
   .controls {
     max-width: 1400px;
     vertical-align: middle;
@@ -57,5 +58,16 @@
       position: absolute;
       right: 50px;
     }
+  }
+}
+
+@keyframes SlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
