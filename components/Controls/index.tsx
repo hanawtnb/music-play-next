@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BsSkipBackwardFill, BsSkipForwardFill } from "react-icons/bs";
 import { VscDebugPause, VscPlayCircle } from "react-icons/vsc";
-
+import { HiOutlinePause } from "react-icons/hi";
 import DurationBar from "components/DurationBar";
 
 import { Context as SongContext } from "store/song";
@@ -23,7 +23,11 @@ const Controls = () => {
   return (
     <div className={styles["controller"]}>
       <div className={styles["controls"]}>
-        <button onClick={prevSong} disabled={!event}>
+        <button
+          onClick={prevSong}
+          disabled={!event}
+          className={styles["controls__skipBackBtn"]}
+        >
           <BsSkipBackwardFill />
         </button>
         {isPaused ? (
@@ -34,6 +38,7 @@ const Controls = () => {
             }}
             type="button"
             disabled={!event}
+            className={styles["controls__playPauseBtn"]}
           >
             <VscPlayCircle />
           </button>
@@ -45,11 +50,17 @@ const Controls = () => {
             }}
             type="button"
             disabled={!event}
+            className={styles["controls__playPauseBtn"]}
           >
-            <VscDebugPause />
+            <HiOutlinePause />
           </button>
         )}
-        <button onClick={nextSong} type="button" disabled={!event}>
+        <button
+          onClick={nextSong}
+          type="button"
+          disabled={!event}
+          className={styles["controls__skipBackBtn"]}
+        >
           <BsSkipForwardFill />
         </button>
       </div>

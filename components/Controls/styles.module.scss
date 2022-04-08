@@ -1,16 +1,28 @@
 .controller {
-  margin: 15px auto 0;
+  margin: 13px auto;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 
   .controls {
+    display: flex;
     text-align: center;
-    button {
-      padding-bottom: 5px;
-      font-size: 30px;
-      border: 1px white;
-      border-radius: 50%;
+    vertical-align: middle;
+    justify-content: center;
+    margin-bottom: 5px;
+    &__skipBackBtn {
+      font-size: 20px;
+      border: none;
+      background-color: transparent;
+      margin-left: 10px;
+      color: white;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &__playPauseBtn {
+      font-size: 40px;
+      border: none;
       background-color: transparent;
       margin-left: 10px;
       color: white;
