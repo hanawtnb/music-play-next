@@ -7,10 +7,15 @@
   .controls {
     text-align: center;
     button {
-      font-size: 40px;
+      padding-bottom: 5px;
+      font-size: 30px;
+      border: 1px white;
+      border-radius: 50%;
       background-color: transparent;
-      border: none;
+      // border: none;
       margin-left: 10px;
+      // padding: 10px;
+      color: white;
       &:hover {
         cursor: pointer;
       }

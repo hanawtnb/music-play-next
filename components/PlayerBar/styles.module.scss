@@ -9,7 +9,8 @@
 }
 
 .bar {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(18, 18, 18);
+  border-top: 1px white solid;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -36,8 +37,9 @@
         font-size: 15px;
         // margin-top: 10px;
         border: none;
+        color: white;
         button {
-          color: #413f3f;
+          color: white;
           padding: 0;
           font-size: 15px;
           border: none;
