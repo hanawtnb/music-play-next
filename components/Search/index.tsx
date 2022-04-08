@@ -32,7 +32,12 @@ const Form = () => {
 
   return (
     <form className={styles["search"]}>
-      <input type="text" onChange={handleChange} value={search} />
+      <input
+        placeholder="Search..."
+        type="text"
+        onChange={handleChange}
+        value={search}
+      />
     </form>
   );
 };
