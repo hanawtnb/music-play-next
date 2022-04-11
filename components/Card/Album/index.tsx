@@ -2,12 +2,16 @@ import React, { useContext, useState, VFC } from "react";
 
 import { Context as SongContext } from "store/song";
 import search from "utils/youtubeSearch";
+import type { Artist } from "../../../types/types";
 
 import styles from "./styles.module.scss";
 
 type Props = {
-  img: string;
-  albumId: string;
+  // img: string;
+  // albumId: string;
+  name: string;
+  artists: Array<Artist>;
+  id: string;
 };
 
 /**
@@ -16,7 +20,8 @@ type Props = {
  * @returns - アルバム収録曲のカード
  */
 const AlbumCard: VFC<Props> = (props) => {
-  const { name, artists, id }: any = props;
+  const { name, artists, id } = props;
+
   const { curSong, setCurSong, setCurAlbum, searched } =
     useContext(SongContext);
   /**
