@@ -2,8 +2,9 @@ import React, { useContext, VFC } from "react";
 import YouTube from "react-youtube";
 
 import { Context as SongContext } from "store/song";
+import { YoutubeOptions } from "../../types/types";
 
-const opts: any = {
+const options: YoutubeOptions = {
   height: "0",
   width: "0",
   playerVars: {
@@ -22,7 +23,7 @@ const Player: VFC = () => {
       onPlay={(event) => setEvent(event.target)}
       videoId={curSong?.videoId}
       onEnd={nextSong}
-      opts={opts}
+      opts={options}
     />
   );
 };

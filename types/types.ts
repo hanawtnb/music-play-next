@@ -49,8 +49,8 @@ export type Item = {
   uri: string;
 };
 
-// export type YoutubeOptions = {
-//   height: string;
-//   width: string;
-//   playerVars: object;
-// };
+export type YoutubeOptions = {
+  height: string;
+  width: string;
+  playerVars: object;
+};
