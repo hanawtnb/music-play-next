@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 
 import { Context as SearchContext } from "store/search";
+import { Item } from "../../../types/types";
 
 import styles from "./styles.module.scss";
 
@@ -18,7 +19,7 @@ const ArtistCard = () => {
 
   return (
     <div className={styles["page"]}>
-      {searched?.items?.map((items: any) => (
+      {searched?.items?.map((items: Item) => (
         <div
           className={styles["card"]}
           key={items.id}

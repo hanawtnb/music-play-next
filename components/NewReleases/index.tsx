@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
 
+import { Item } from "../../types/types";
 import styles from "./styles.module.scss";
 
 //fetcher関数の作成
@@ -23,7 +24,7 @@ const NewCard = dynamic(() => import("components/Card/New"), {
   loading: () => <LoadingCard />,
 });
 
-const NewReleases = (args: { access_token: any }) => {
+const NewReleases = (args: { access_token: string }) => {
   const router = useRouter();
   const { data } = useSWR(
     `/api/spotify/${args?.access_token}/newReleases`,
@@ -38,8 +39,8 @@ const NewReleases = (args: { access_token: any }) => {
       <div className={styles["page"]}>
         <h4 className={styles["title"]}>New Releases</h4>
 
-        {data.albums.items?.map((item: any) => (
-          <NewCard key={item.id} {...item} />
+        {data.albums.items?.map((item: Item) => (
+          <NewCard images={[]} key={item.id} {...item} />
         ))}
       </div>
     </div>
