@@ -24,12 +24,10 @@ const NewCard = dynamic(() => import("components/Card/New"), {
   loading: () => <LoadingCard />,
 });
 
-const NewReleases = (args: { access_token: string }) => {
+const NewReleases = () => {
   const router = useRouter();
-  const { data } = useSWR(
-    `/api/spotify/${args?.access_token}/newReleases`,
-    fetcher
-  );
+  const { data } = useSWR(`/api/spotify/newReleases`, fetcher);
+
   if (!data) return <LoadingCard />;
 
   if (router.query.search || router.query.album) return null;

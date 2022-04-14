@@ -1,10 +1,12 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
-import search from "utils/youtubeSearch";
+import { Context as YoutubeContext } from "store/youtube";
 
 export const Context: any = createContext(null);
 
 export const Store: any = ({ children }) => {
+  const { getId } = useContext(YoutubeContext);
+
   const [curSong, setCurSong] = useState(null);
   const [curAlbum, setCurAlbum] = useState(null);
   const [event, setEvent] = useState(null);
@@ -19,7 +21,7 @@ export const Store: any = ({ children }) => {
     if (!prevSong?.videoId) {
       prevSong = {
         ...prevSong,
-        videoId: await search(
+        videoId: await getId(
           `${prevSong?.artists?.[0]?.name} - ${prevSong?.name} song`
         ),
       };
@@ -36,7 +38,7 @@ export const Store: any = ({ children }) => {
     if (!nextSong?.videoId) {
       nextSong = {
         ...nextSong,
-        videoId: await search(
+        videoId: await getId(
           `${nextSong?.artists?.[0]?.name} - ${nextSong?.name} song`
         ),
       };
