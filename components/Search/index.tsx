@@ -1,4 +1,4 @@
-import React, { useState, useRef, ChangeEvent } from "react";
+import React, { useState, useRef, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/router";
 
 import styles from "./styles.module.scss";
@@ -8,6 +8,10 @@ const Form = () => {
   const router = useRouter();
   // 検索
   const [search, setSearch] = useState("");
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event?.target?.value);
@@ -31,7 +35,7 @@ const Form = () => {
   };
 
   return (
-    <form className={styles["search"]}>
+    <form className={styles["search"]} onSubmit={submitHandler}>
       <input
         placeholder="Search..."
         type="text"
