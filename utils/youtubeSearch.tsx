@@ -16,26 +16,11 @@ const options = {
  */
 const youtubeSearch = async (props) => {
   const id = await new Promise((res, rej) => {
-    let storage: any = localStorage.getItem("history");
-    if (storage) storage = JSON.parse(storage);
-
-    if (storage?.find(({ searchStr }) => searchStr === props)) {
-      return res(storage?.find(({ searchStr }) => searchStr === props)?.id);
-    }
-
     search(props, options, (err, results) => {
       if (err) {
         console.error(err);
         return rej();
       }
-      localStorage.setItem(
-        "history",
-        JSON.stringify(
-          storage?.length > 0
-            ? [...storage, { ...results?.[0], searchStr: props }]
-            : [{ ...results?.[0], searchStr: props }]
-        )
-      );
       res(results?.[0]?.id);
     });
   });
