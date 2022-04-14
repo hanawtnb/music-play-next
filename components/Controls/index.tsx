@@ -11,14 +11,9 @@ import styles from "./styles.module.scss";
 //再生ボタンなどのコントローラー
 const Controls = () => {
   const { event, nextSong, prevSong } = useContext(SongContext);
-  // ポーズ状態
-  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    if (event?.getPlayerState() === 1) {
-      setIsPaused(false);
-    }
-  }, []);
+  // ポーズ状態
+  const [, setIsPaused] = useState(false);
 
   return (
     <div className={styles["controller"]}>
@@ -30,7 +25,7 @@ const Controls = () => {
         >
           <BsSkipBackwardFill />
         </button>
-        {isPaused ? (
+        {event?.getPlayerState() === 1 ? (
           <button
             onClick={() => {
               event?.playVideo();
