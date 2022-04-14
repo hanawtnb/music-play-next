@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, VFC } from "react";
 import { useRouter } from "next/router";
 
-import { Context as TokenContext } from "store/token";
 import { Context as SongContext } from "store/song";
 
 import styles from "./styles.module.scss";
@@ -10,18 +9,17 @@ import AlbumCard from "components/Card/Album";
 //アルバムを表示
 const AlbumLayout = () => {
   const router = useRouter();
-  const { handleToken } = useContext(TokenContext);
   const { searched, setSearched } = useContext(SongContext);
 
   /**
    * spotifyAPIから曲を検索.
    */
-  const handleSearch = handleToken((args) => {
-    fetch(`/api/spotify/${args?.access_token}/album/${args.search}`)
+  const handleSearch = (search) => {
+    fetch(`/api/spotify/album/${search}`)
       .then((res) => res.json())
       .then((body) => setSearched(body))
       .catch((err) => console.error(err));
-  });
+  };
 
   //パラメーターをもとに曲を検索。
   useEffect(() => {
@@ -46,6 +44,7 @@ const AlbumLayout = () => {
       <div className={styles["cards"]}>
         {searched?.tracks?.items?.map((item) => (
           <AlbumCard
+            key={item.id}
             {...item}
             img={searched?.images[0]?.url}
             albumId={searched?.id}

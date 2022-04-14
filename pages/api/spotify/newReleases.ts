@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import SpotifyWebApi from "spotify-web-api-node";
+import { parse } from "cookie";
 
 const newRelease = (req: NextApiRequest, res: NextApiResponse) => {
-  const { accessToken } = req.query;
-  const spotifyApi = new SpotifyWebApi({ accessToken });
+  const cookie = parse(req.headers.cookie);
+  const spotifyApi = new SpotifyWebApi({ accessToken: cookie.accessToken });
 
   return spotifyApi
     .getNewReleases({ limit: 20, offset: 0, country: "SE" })

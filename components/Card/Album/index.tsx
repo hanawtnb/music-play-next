@@ -1,14 +1,12 @@
 import React, { useContext, useState, VFC } from "react";
 
 import { Context as SongContext } from "store/song";
-import search from "utils/youtubeSearch";
+import { Context as YoutubeContext } from "store/youtube";
 import type { Artist } from "../../../types/types";
 
 import styles from "./styles.module.scss";
 
 type Props = {
-  // img: string;
-  // albumId: string;
   name: string;
   artists: Array<Artist>;
   id: string;
@@ -24,12 +22,16 @@ const AlbumCard: VFC<Props> = (props) => {
 
   const { curSong, setCurSong, setCurAlbum, searched } =
     useContext(SongContext);
+  const { getId } = useContext(YoutubeContext);
+
   /**
    * Youtubeで曲を検索.
    */
   const searchSong = async () => {
-    const res = await search(`${artists?.[0]?.name} - ${name} song`);
-    setCurSong({ ...props, videoId: res });
+    setCurSong({
+      ...props,
+      videoId: await getId(`${artists?.[0]?.name} - ${name} song`),
+    });
     setCurAlbum({
       ...searched,
       tracks: {
