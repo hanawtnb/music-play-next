@@ -20,7 +20,7 @@ const DurationBar = () => {
 
   // 再生時間をセット
   useEffect(() => {
-    setDuration(event?.getDuration());
+    setDuration(event?.getDuration() ?? 0);
   }, [event]);
 
   return (

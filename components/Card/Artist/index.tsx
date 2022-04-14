@@ -19,13 +19,13 @@ const ArtistCard = () => {
 
   return (
     <div className={styles["page"]}>
-      {searched?.items?.map((items: Item) => (
+      {searched?.items?.map((item: Item) => (
         <div
           className={styles["card"]}
-          key={items.id}
+          key={item.id}
           onClick={() =>
             router.push(
-              { pathname: "/", query: { album: items.album.id } },
+              { pathname: "/", query: { album: item.album.id } },
               undefined,
               { shallow: true }
             )
@@ -33,10 +33,10 @@ const ArtistCard = () => {
         >
           <div className={styles["album"]}>
             <div className={styles["info"]}>
-              <p className={styles["info__name"]}>{items.name}</p>
-              <p>{items.artists[0].name}</p>
+              <p className={styles["info__name"]}>{item.name}</p>
+              <p>{item.artists[0].name}</p>
             </div>
-            <img src={items.album.images[0].url} />
+            <img src={item.album.images[0].url} />
           </div>
         </div>
       ))}

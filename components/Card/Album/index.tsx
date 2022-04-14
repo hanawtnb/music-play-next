@@ -19,7 +19,6 @@ type Props = {
  */
 const AlbumCard: VFC<Props> = (props) => {
   const { name, artists, id } = props;
-
   const { curSong, setCurSong, setCurAlbum, searched } =
     useContext(SongContext);
   const { getId } = useContext(YoutubeContext);
