@@ -38,7 +38,6 @@ export const Store: any = ({ children }) => {
     const storage: any = localStorage.getItem("playlist");
 
     const newPlaylist = JSON.parse(storage).splice(props, 1);
-    console.log("い", newPlaylist);
     setPlaylist(newPlaylist);
   };
 

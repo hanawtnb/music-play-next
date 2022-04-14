@@ -19,7 +19,6 @@ const MainPage: NextPage = (props) => {
     });
   }, []);
 
-  console.log(props);
   return (
     <>
       <NavBar />
