@@ -15,11 +15,17 @@ export const Store: any = ({ children }) => {
 
   // const { mutate } = useSWRConfig();
 
+  /**
+   * VideoIdを返す.
+   * @param props - アーティスト名と曲名
+   * @returns - videoId
+   */
   const getId = async (props) => {
+    // DBにある場合は検索してvideoIdを返す
     if (data?.find(({ searchStr }) => searchStr === props)) {
       return data?.find(({ searchStr }) => searchStr === props)?.videoId;
     }
-
+    //  ない場合はYoutubeAPIでクエリしてDBに保存する
     const res = await search(props);
     // mutate({ searchStr: props, videoId: res }, false);
     fetch("/api/db/create", {
